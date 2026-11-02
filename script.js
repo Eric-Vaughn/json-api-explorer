@@ -7,10 +7,10 @@ fetchPostsButton.addEventListener("click", () => {
 
 // taken from https://jsonplaceholder.typicode.com/posts
 async function getPosts() {
-    // Fetch
+    // Fetch the response
     let response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
-    // Convert
+    // Convert to json
     let posts = await response.json();
 
     // Make unordered list
@@ -35,4 +35,7 @@ async function getPosts() {
         // Add the item to the list
         postList.appendChild(listItem);
     }
+
+    // Put the list in the proper div
+    postListContainer.appendChild(postList);
 }
