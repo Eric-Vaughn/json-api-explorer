@@ -5,7 +5,8 @@ fetchPostsButton.addEventListener("click", () => {
     getPosts();
 });
 
-// taken from https://jsonplaceholder.typicode.com/posts
+// Fetch posts taken from https://jsonplaceholder.typicode.com/posts
+// and insert them in a <div> with id=postList
 async function getPosts() {
     // Fetch the response
     let response = await fetch("https://jsonplaceholder.typicode.com/posts");
