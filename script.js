@@ -1,6 +1,9 @@
 const postListContainer = document.getElementById("postList");
+const fetchPostsButton = document.getElementById("fetchButton");
 
-getPosts();
+fetchPostsButton.addEventListener("click", () => {
+    getPosts();
+});
 
 // taken from https://jsonplaceholder.typicode.com/posts
 async function getPosts() {
