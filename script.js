@@ -1,8 +1,6 @@
 const postListContainer = document.getElementById("postList");
 const fetchPostsButton = document.getElementById("fetchButton");
 
-const newPostTitle = document.getElementById("titleInput");
-const newPostBody = document.getElementById("bodyInput");
 const newPostForm = document.getElementById("postForm");
 
 fetchPostsButton.addEventListener("click", () => {
@@ -51,5 +49,19 @@ async function getPosts() {
 
 // Send a post to https://jsonplaceholder.typicode.com/posts
 async function postPost() {
-    // TODO: dfff
+    const newPostTitle = document.getElementById("titleInput").value;
+    const newPostBody = document.getElementById("bodyInput").value;
+
+    const postData = {
+        title: newPostTitle,
+        body: newPostBody,
+    };
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+    });
 }
