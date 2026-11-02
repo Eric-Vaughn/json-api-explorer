@@ -1,8 +1,16 @@
 const postListContainer = document.getElementById("postList");
 const fetchPostsButton = document.getElementById("fetchButton");
 
+const newPostTitle = document.getElementById("titleInput");
+const newPostBody = document.getElementById("bodyInput");
+const newPostForm = document.getElementById("postForm");
+
 fetchPostsButton.addEventListener("click", () => {
     getPosts();
+});
+
+newPostForm.addEventListener("submit", () => {
+    postPost();
 });
 
 // Fetch posts taken from https://jsonplaceholder.typicode.com/posts
@@ -39,4 +47,9 @@ async function getPosts() {
 
     // Put the list in the proper div
     postListContainer.appendChild(postList);
+}
+
+// Send a post to https://jsonplaceholder.typicode.com/posts
+async function postPost() {
+    // TODO: dfff
 }
