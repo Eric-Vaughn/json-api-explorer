@@ -5,7 +5,10 @@ const newPostForm = document.getElementById("postForm");
 
 fetchPostsButton.addEventListener("click", getPosts);
 
-newPostForm.addEventListener("submit", postPost);
+newPostForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    postPost();
+});
 
 // Fetch posts taken from https://jsonplaceholder.typicode.com/posts
 // and insert them in a <div> with id=postList
