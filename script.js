@@ -51,6 +51,9 @@ async function postPost() {
     const newPostTitle = document.getElementById("titleInput").value;
     const newPostBody = document.getElementById("bodyInput").value;
 
+    const formErrorDiv = document.getElementById("formError");
+    const formSuccessDiv = document.getElementById("formSuccess");
+
     const postData = {
         title: newPostTitle,
         body: newPostBody,
@@ -64,5 +67,26 @@ async function postPost() {
         body: JSON.stringify(postData),
     });
 
-    console.log(response);
+    // Container for the message
+    const postMessage = document.createElement("p");
+
+    if (response.ok) {
+        // Reset other places where the message can appear
+        formErrorDiv.innerHTML = ""; // Empty
+
+        // Write message
+        postMessage.textContent = "Success! Your post has been submitted.";
+
+        // Append the message
+        formSuccessDiv.appendChild(postMessage);
+    } else {
+        // Reset other places where the message can appear
+        formSuccessDiv.innerHTML = ""; // Empty
+
+        // Write message
+        postMessage.textContent = "Error: Your something went wrong.";
+
+        // Append the message
+        formErrorDiv.appendChild(postMessage);
+    }
 }
