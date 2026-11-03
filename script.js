@@ -1,3 +1,5 @@
+import { resetMessageDiv, updateFormMessage } from "./utils.js";
+
 const postListContainer = document.getElementById("postList");
 const fetchPostsButton = document.getElementById("fetchButton");
 
@@ -13,11 +15,18 @@ newPostForm.addEventListener("submit", (event) => {
 // Fetch posts taken from https://jsonplaceholder.typicode.com/posts
 // and insert them in a <div> with id=postList
 async function getPosts() {
-    // Fetch the response
-    let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    try {
+        // Fetch the response
+        let response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+        );
 
-    // Convert to json
-    let posts = await response.json();
+        // Convert to json
+        let posts = await response.json();
+    } catch (error) {
+        updateFormMessage("error", "Failed to load data. Please try again.");
+        console.error("Fetch error:", error);
+    }
 
     // Make unordered list
     const postList = document.createElement("ul");
@@ -70,25 +79,25 @@ async function postPost() {
     // Container for the message
     const postMessage = document.createElement("p");
 
-    console.log(response.status);
-
     if (response.ok) {
         // Reset other places where the message can appear
-        formErrorDiv.innerHTML = ""; // Empty
+        resetMessageDiv("formSuccess");
+        resetMessageDiv("formError");
 
         // Write message
-        postMessage.textContent = `Success! Your post has been submitted.`;
-
-        // Append the message
-        formSuccessDiv.appendChild(postMessage);
+        updateFormMessage(
+            "formSuccess",
+            "Success! Your post has been submitted.",
+        );
     } else {
         // Reset other places where the message can appear
-        formSuccessDiv.innerHTML = ""; // Empty
+        resetMessageDiv("formSuccess");
+        resetMessageDiv("formError");
 
         // Write message
-        postMessage.textContent = `Error: Your something went wrong. | Status code: ${response.status}`;
-
-        // Append the message
-        formErrorDiv.appendChild(postMessage);
+        updateFormMessage(
+            "formError",
+            `Error: Your something went wrong. | Status code: ${response.status}`,
+        );
     }
 }
