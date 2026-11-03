@@ -77,7 +77,7 @@ async function postPost() {
         formErrorDiv.innerHTML = ""; // Empty
 
         // Write message
-        postMessage.textContent = `Success! Your post has been submitted. | Status code: ${response.status}`;
+        postMessage.textContent = `Success! Your post has been submitted.`;
 
         // Append the message
         formSuccessDiv.appendChild(postMessage);
