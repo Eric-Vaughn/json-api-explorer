@@ -3,13 +3,9 @@ const fetchPostsButton = document.getElementById("fetchButton");
 
 const newPostForm = document.getElementById("postForm");
 
-fetchPostsButton.addEventListener("click", () => {
-    getPosts();
-});
+fetchPostsButton.addEventListener("click", getPosts);
 
-newPostForm.addEventListener("submit", () => {
-    postPost();
-});
+newPostForm.addEventListener("submit", postPost);
 
 // Fetch posts taken from https://jsonplaceholder.typicode.com/posts
 // and insert them in a <div> with id=postList
@@ -64,4 +60,6 @@ async function postPost() {
         },
         body: JSON.stringify(postData),
     });
+
+    console.log(response);
 }
