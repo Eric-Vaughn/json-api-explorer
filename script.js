@@ -73,9 +73,7 @@ async function postPost() {
         body: JSON.stringify(postData),
     });
 
-    // Container for the message
-    const postMessage = document.createElement("p");
-
+    // Handle messages
     if (response.ok) {
         // Reset other places where the message can appear
         resetMessageDiv("formSuccess");
