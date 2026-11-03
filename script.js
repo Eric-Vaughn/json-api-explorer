@@ -70,12 +70,14 @@ async function postPost() {
     // Container for the message
     const postMessage = document.createElement("p");
 
+    console.log(response.status);
+
     if (response.ok) {
         // Reset other places where the message can appear
         formErrorDiv.innerHTML = ""; // Empty
 
         // Write message
-        postMessage.textContent = "Success! Your post has been submitted.";
+        postMessage.textContent = `Success! Your post has been submitted. | Status code: ${response.status}`;
 
         // Append the message
         formSuccessDiv.appendChild(postMessage);
@@ -84,7 +86,7 @@ async function postPost() {
         formSuccessDiv.innerHTML = ""; // Empty
 
         // Write message
-        postMessage.textContent = "Error: Your something went wrong.";
+        postMessage.textContent = `Error: Your something went wrong. | Status code: ${response.status}`;
 
         // Append the message
         formErrorDiv.appendChild(postMessage);
