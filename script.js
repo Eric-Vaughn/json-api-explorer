@@ -60,9 +60,6 @@ async function postPost() {
     const newPostTitle = document.getElementById("titleInput").value;
     const newPostBody = document.getElementById("bodyInput").value;
 
-    const formErrorDiv = document.getElementById("formError");
-    const formSuccessDiv = document.getElementById("formSuccess");
-
     const postData = {
         title: newPostTitle,
         body: newPostBody,
